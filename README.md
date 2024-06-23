@@ -36,6 +36,13 @@ The main goal is to develop an algorithm that returns the most valuable path and
 - Values of cells increase over time after being visited (with regeneration speed r defined by the user).
 - The algorithm must complete within the given time limit T.
 
+## Evaluation Criteria
+
+- Code quality and efficiency.
+- Explanation and justification of the chosen methodology.
+- Ability to handle larger grid sizes and time steps within the time limit.
+- Clarity and thoroughness of the documentation.
+
 
 # Problem analysis
 

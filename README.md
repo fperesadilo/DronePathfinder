@@ -46,6 +46,16 @@ The main goal is to develop an algorithm that returns the most valuable path and
 
 # Problem analysis
 
+# Algorithm design
+
+## Path-planning strategy
+
+## Implementation steps
+
+## Testing and Validation
+- Test Cases: developing test cases using provided example levels of different sizes to validate algorithm.
+- Edge Cases: considering edge cases such as minimal grid size, maximal time steps, and extreme starting positions.
+- Performance Evaluation: assessing the algorithm's performance with larger grid sizes and time steps to ensure scalability.
 
 # Code implementation
 

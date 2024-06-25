@@ -14,7 +14,7 @@ In this project, I developed a simulation in which a drone independently monitor
 
 # Problem decsription and requirements
 
-In this project, we are working on a simulation in which a drone is capable of independently monitoring an area. This project focuses on a single drone navigating a (N x N) grid where each cell has a numerical value. The drone must find the most optimal path to fly over, i.e. a path that maximizes the total sum of all collected values, while at the same time taking into consideration the dynamic nature of the cell values.
+In this project, I have been working on a simulation in which a drone is capable of independently monitoring an area. This project focuses on a single drone navigating a (N x N) grid where each cell has a numerical value. The drone must find the most optimal path to fly over, i.e. a path that maximizes the total sum of all collected values, while at the same time taking into consideration the dynamic nature of the cell values.
 
 ## Requirements
 
@@ -235,6 +235,10 @@ print("Best path:", best_path)
 
 visualize_path(grid_20, best_path)
 ```
+
+Visualisation result:
+
+![alt text](https://github.com/fperesadilo/drone_pathfinder/blob/main/img/generated_path.png)
 
 # Results and evaluation
 

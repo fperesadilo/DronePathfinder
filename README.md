@@ -173,7 +173,7 @@ Mutation introduces random changes in individual paths. In orienteering, this me
 
 The algorithm iteratively refines these paths, balancing exploration (searching for new, potentially better paths) and exploitation (improving known paths). By continually evolving and selecting the most promising solutions, it seeks to converge on a path that maximizes value collection within the defined constraints.
 
-Ultimately, the genetic algorithm navigates the trade-offs between exploration and exploitation to find a high-value path efficiently. It harnesses the power of evolutionary principles to adapt and improve paths over time, aiming for optimal performance in path planning scenarios.
+Ultimately, the genetic algorithm navigates the trade-offs between exploration and exploitation to find a high-value path efficiently. It harnesses the power of evolutionary principles to adapt and improve paths over time, aiming for optimal performance in path planning scenarios. The algorithm is inspired by the implementation by [mc-ride](https://github.com/mc-ride/orienteering).
 
 Pseudocode for the genetic algorithm:
 

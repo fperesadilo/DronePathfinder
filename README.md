@@ -216,6 +216,10 @@ Class GeneticAlgorithm:
         Return the best path and its fitness
 ```
 
+Here, **elitism** refers to a strategy where the best-performing individuals (paths) from one generation are directly carried over to the next generation without undergoing crossover or mutation. These elite individuals represent the highest fitness solutions found so far and are preserved to ensure that the best solutions discovered are not lost in subsequent generations.
+
+Elitism helps maintain the overall quality of solutions across generations by preventing the algorithm from losing the best-performing paths due to crossover or mutation operations that might inadvertently reduce their fitness.
+
 ## Testing and Validation
 In this project, I implemented a testing and validation framework to ensure the correctness and robustness of my algorithms. Here is a brief summary:
 

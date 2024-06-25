@@ -53,6 +53,8 @@ The main goal is to develop an algorithm that returns the most valuable path and
 
 # Problem analysis
 
+Before I start conceptualizing solutions for the problem, I tend to look how smarter people than me look at the problem or how they define it, or whether I can reduce the problem to an existing problem and model it from there. In the literature, this problem is called the Orienteering Problem (OP), also called the Selective Travelling Salesperson Problem or the Maximum Collection Problem, and is a well known NP-hard combinatorial optimisation problem ([source](https://bird.bcamath.org/bitstream/handle/20.500.11824/730/ea4op.pdf)). The origin of the problem is a sports game, where the participants are given a topographical map with detailed control points with rewards. The participants try to visit the points in order to maximise the total prize obtained; however, there is a time limitation. Therefore, the OP is basically a routing problem with profits and it can be seen as a combination between the Knapsack Problem and the Travelling Salesperson Problem (TSP) 
+
 # Algorithm design
 
 Conceptually, this orienteering problem can be solved using four different approaches: with (1) brute-force, a greedy algorithm, dynamic programming, or a (meta)Heuristic algorithm (e.g. genetic algorithms). Each method has its benefits and downsides, especially when considering large grids and large T.

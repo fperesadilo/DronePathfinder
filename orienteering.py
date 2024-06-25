@@ -186,9 +186,12 @@ class GeneticAlgorithm:
         moves_left = self.tmax
     
         for move in chrom:
-            if moves_left <= 0:
+            if moves_left <= 0: # Stop if no moves left
                 break
+            # Calculate the next position based on the current move
             next_pos = (current_pos[0] + move[0], current_pos[1] + move[1])
+
+            # Check if the next position is within grid boundaries
             if 0 <= next_pos[0] < self.grid.shape[0] and 0 <= next_pos[1] < self.grid.shape[1]:
                 current_pos = next_pos
                 path.append(current_pos)
@@ -252,26 +255,32 @@ class GeneticAlgorithm:
         # Generate initial random population
         pop = []
         for i in range(self.popsize + self.elitismn):
+            # Create a chromosome with random moves
             chrom = [random.choice(self.moves) for _ in range(self.tmax)]
+            # Evaluate its fitness
             fit_val, _ = self.fitness(chrom)
+            # Store as a tuple of fitness value and chromosome
             chrom = (fit_val, chrom)
             j = 0
+            # Insert chromosome in the sorted order
             while i - j > 0 and j < self.elitismn and chrom > pop[i - 1 - j]:
                 j += 1
             pop.insert(i - j, chrom)
 
         bestfit = 0
         for i in range(self.genlimit):
-            nextgen = []
+            nextgen = [] # Create a list for the next generation
             for j in range(self.popsize):
                 # Select parents in k tournaments
                 parents = sorted(random.sample(pop, self.kt), key=lambda x: x[0])[self.kt - 2:]
                 # Crossover and mutate
                 offspring = self.mutate(self.crossover(parents[0][1], parents[1][1]))
+                # Evaluate the fitness of the offspring
                 fit_val, _ = self.fitness(offspring)
                 offspring = (fit_val, offspring)
                 if offspring[0] > bestfit:
                     bestfit = offspring[0]
+                # Insert offspring into the population maintaining elitism
                 if self.elitismn > 0 and offspring > pop[self.popsize]:
                     l = 0
                     while l < self.elitismn and offspring > pop[self.popsize + l]:
@@ -282,6 +291,7 @@ class GeneticAlgorithm:
                     nextgen.append(offspring)
             pop = nextgen + pop[self.popsize:]
 
+        # Find the best chromosome from the final population
         bestchrom = sorted(pop)[self.popsize + self.elitismn - 1]
         bestfit_val, best_path = self.fitness(bestchrom[1])
 

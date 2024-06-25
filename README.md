@@ -1,11 +1,12 @@
-# drone_pathfinder
-Path-planning algorithm implementation that maximizes the value collected by a single drone navigating a dynamic grid within a time limit
+# Summary
+In this project, I developed a simulation in which a drone independently monitors an area. The drone navigates a grid to find the most optimal path that maximizes the total sum of collected values, considering the dynamic nature of cell values. This repo presents two algorithms of solving this orienteering problem: an approach using (1) dynamic programming, and (2) a genetic algorithm. Dynamic programming was selected for its efficiency in finding optimal solutions in smaller to medium-sized grids within feasible time limits. It systematically breaks down the problem into subproblems and stores intermediate results. A genetic algorithm was chosen as a metaheuristic approach capable of handling larger search spaces and longer time horizons where exact methods like DP might become impractical due to computational and memory constraints.
 
 # Content
-
-
-# Summary
-
+- Problem Description and Requirements
+- Implementation Steps
+- Testing and Validation
+- Code Implementation and Usage
+- Results and Evaluation
 
 # Problem decsription and requirements
 

@@ -275,6 +275,32 @@ Visualisation result:
 
 # Results and evaluation
 
+In order to assess the efficiency of both algorithms, I have iterated over 50 predefined starting points on a predefined 1000x1000 grid, and computed the most valuable paths in 25 steps.
+
+```python
+# Initialize input parameters
+start = (500, 500)
+T = 25
+regen_value = 1
+
+# List to store the results
+results_dp = []
+results_ga = []
+
+# Iterate over the starting points and collect running times
+for start in starting_points_1000:
+    # Performance DP
+    dp_path_finder = DynamicProgramming(grid_1000, start, T, regen_value)
+    max_value, path, dp, parent, elapsed_time = dp_path_finder.max_path_value_and_path()
+    results_dp.append({'max_value': max_value, 'elapsed_time': elapsed_time})
+    # Performance GA
+    ga_path_finder = GeneticAlgorithm(grid_1000, start, start, T, regen_value)
+    path, max_value, elapsed_time = ga_path_finder.run_algorithm()
+    results_ga.append({'max_value': max_value, 'elapsed_time': elapsed_time})
+```
+
+The results:
+
 ![alt text](https://github.com/fperesadilo/drone_pathfinder/blob/main/img/efficiency_analysis.png)
 
 Analysis:
@@ -282,5 +308,7 @@ Analysis:
 - The dynamic programming algorithm is on average much faster than the GA
 - The dynamic programming algorithm returns on average a better (i.e. higher value) path
 - A possible explanation is that the parameters of the GA are not explored properly. Technically, the complexity for the GA increases linearly in T, while DP increases linearly in T^2 (depending on the grid size).
+
+- **To-do:** add visualisation of path values 
 
 # Suggestions for further research

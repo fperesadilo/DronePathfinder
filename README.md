@@ -14,7 +14,7 @@ In this project, I developed a simulation in which a drone independently monitor
 - Code usage and examples (incl. visualisation)
 - Results and evaluation
 
-# Problem decsription and requirements
+# Problem description and requirements
 
 In this project, I have been working on a simulation in which a drone is capable of independently monitoring an area. This project focuses on a single drone navigating a (N x N) grid where each cell has a numerical value. The drone must find the most optimal path to fly over, i.e. a path that maximizes the total sum of all collected values, while at the same time taking into consideration the dynamic nature of the cell values.
 

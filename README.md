@@ -275,5 +275,12 @@ Visualisation result:
 
 # Results and evaluation
 
+![alt text](https://github.com/fperesadilo/drone_pathfinder/blob/main/img/efficiency_analysis.png)
+
+Analysis:
+
+- The dynamic programming algorithm is on average much faster than the GA
+- The dynamic programming algorithm returns on average a better (i.e. higher value) path
+- A possible explanation is that the parameters of the GA are not explored properly. Technically, the complexity for the GA increases linearly in T, while DP increases linearly in T^2 (depending on the grid size).
 
 # Suggestions for further research

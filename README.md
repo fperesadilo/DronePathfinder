@@ -119,6 +119,14 @@ For very large grids and significant time steps (large N and T), metaheuristic a
 
 In this case, I have decided only to implement two algorithms using the dynamic programming (DP) approach and a genetic algorithm (GA).
 
+The **dynamic programming algorithm (DP)** for path planning in a grid with changing cell values works like a methodical treasure hunt. Imagine starting at a point on a map where each spot has a different value. The goal is simple: find a path that, over a set number of moves, collects the most value possible.
+
+To achieve this, the algorithm uses a table that keeps track of the best possible value for reaching each spot on the map at each step of the journey. As it progresses through each step, it updates this table to ensure it always knows the best way to maximize the total value collected up to that point.
+
+The algorithm also considers the cost of revisiting spots where values might change over time. It carefully evaluates each move—whether to revisit a known spot or explore new ones—ensuring it makes the best decisions based on the potential rewards at each step.
+
+Overall, the algorithm combines systematic exploration with smart decision-making to find a path that not only respects time limits but also gathers the highest possible total value. It's like navigating a map to gather as much treasure as possible, using a step-by-step approach to ensure every move counts towards maximizing the loot.
+
 Pseudocode for the dynammic programming approach:
 ```
 Class DynamicProgramming:
@@ -155,6 +163,17 @@ Class DynamicProgramming:
 
 ```
 
+The **genetic algorithm (GA)** for path planning in a grid with changing cell values operates very much like evolutionary principles in nature. In this algorithm, multiple potential paths (represented as chromosomes) are generated randomly. Each path's fitness, or how well it collects values, is evaluated. Like natural selection, paths with higher fitness are more likely to "survive" and influence future generations of paths.
+
+Through a process resembling genetic crossover and mutation, better-performing paths are combined and altered over successive generations to explore new potential paths. This mimics how genetic traits combine and mutate in living organisms, fostering diversity and potentially uncovering better solutions.
+
+Crossover involves combining two parent paths to create offspring paths. In this algorithm, crossover determines how parts of two parent paths are exchanged to create new paths. For example, segments of one parent's path may replace corresponding segments of another parent's path. This process aims to retain and combine successful traits from both parents, potentially producing offspring paths that inherit beneficial characteristics.
+
+Mutation introduces random changes in individual paths. In orienteering, this means altering certain moves within a path randomly. Mutation helps explore new paths that may not be present in the current population, thus promoting diversity and preventing the algorithm from getting stuck in local optima. It allows for occasional exploration of paths with unexpected but potentially higher values, contributing to the algorithm's ability to find better solutions over time.
+
+The algorithm iteratively refines these paths, balancing exploration (searching for new, potentially better paths) and exploitation (improving known paths). By continually evolving and selecting the most promising solutions, it seeks to converge on a path that maximizes value collection within the defined constraints.
+
+Ultimately, the genetic algorithm navigates the trade-offs between exploration and exploitation to find a high-value path efficiently. It harnesses the power of evolutionary principles to adapt and improve paths over time, aiming for optimal performance in path planning scenarios.
 
 Pseudocode for the genetic algorithm:
 

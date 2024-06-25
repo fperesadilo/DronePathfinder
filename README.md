@@ -106,10 +106,11 @@ Downsides:
 - Computationally expensive compared to greedy algorithms but usually more efficient than brute force and dynamic programming for very large problems.
 
 ## Comparison for Large Grids and Large T:
-Brute Force: Impractical due to exponential growth in computation time with grid size and time steps.
-Greedy Algorithm: Fast but potentially far from optimal, especially in large grids.
-Dynamic Programming: Provides optimal solutions but may become impractical due to memory and computation time constraints in very large grids and long time horizons.
-Genetic Algorithm: Balances between solution quality and computational efficiency. More suitable for large grids and long time horizons where exact methods become infeasible.
+
+- Brute Force: Impractical due to exponential growth in computation time with grid size and time steps.
+- Greedy Algorithm: Fast but potentially far from optimal, especially in large grids.
+- Dynamic Programming: Provides optimal solutions but may become impractical due to memory and computation time constraints in very large grids and long time horizons.
+- Genetic Algorithm: Balances between solution quality and computational efficiency. More suitable for large grids and long time horizons where exact methods become infeasible.
 
 ## Conclusion:
 For very large grids and significant time steps (large N and T), metaheuristic approaches like Genetic Algorithms are often the most practical choice due to their ability to provide good solutions within a reasonable time frame. Greedy algorithms can be used for quick, approximate solutions, while dynamic programming can be leveraged for medium-sized problems where exact solutions are still feasible. Brute force methods are typically only useful for small instances or as a benchmark for solution quality.

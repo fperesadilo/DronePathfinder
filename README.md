@@ -98,14 +98,138 @@ For very large grids and significant time steps (large N and T), metaheuristic a
 
 ## Implementation steps
 
+In this case, I have decided only to implement two algorithms using the dynamic programming (DP) approach and a genetic algorithm (GA).
+
+Pseudocode for the dynammic programming approach:
+```
+Class DynamicProgramming:
+    Initialize with grid, start, T, regen_value
+    Initialize dp table to store maximum values
+    Initialize parent table to store paths
+    Define possible move directions
+
+    Function reconstruct_path(x, y, T):
+        Initialize empty path
+        While T > 0:
+            Add (x, y) to path
+            Update (x, y) to parent cell
+            Decrement T
+        Add start position to path
+        Reverse path
+        Return path
+
+    Function max_path_value_and_path():
+        Set initial value at start position in dp table
+        For each time step t from 1 to T:
+            For each cell (x, y) in the grid:
+                Get current value from dp table
+                For each move direction (dx, dy):
+                    Calculate new position (nx, ny)
+                    If (nx, ny) is within grid:
+                        If (nx, ny) was visited:
+                            Apply regeneration cost
+                        Else:
+                            Calculate new value
+                        If new value is better, update dp and parent tables
+        Find maximum value and reconstruct path from start position
+        Return maximum value, path, dp table, parent table, and elapsed time
+
+```
+
+
+Pseudocode for the genetic algorithm:
+
+```
+Class GeneticAlgorithm:
+    Initialize with grid, start_point, end_point, tmax, regen_value, popsize, genlimit, kt, isigma, msigma, mchance, elitismn
+
+    Function fitness(chrom):
+        Initialize path, collected_values, current_pos, total_value
+        For each move in chrom:
+            Calculate next_pos
+            If next_pos is within grid:
+                Update current_pos and path
+                If current_pos not visited:
+                    Update total_value and collected_values
+        If current_pos is not end_point:
+            Set total_value to 0
+        Return total_value and path
+
+    Function crossover(c1, c2):
+        Choose a crossover point
+        Combine parts of c1 and c2 to create offspring
+        Return offspring
+
+    Function mutate(chrom):
+        For each move in chrom:
+            Possibly change move based on mutation chance
+        Return mutated chromosome
+
+    Function run_algorithm():
+        Initialize population with random chromosomes and their fitness
+        For each generation up to genlimit:
+            Create next generation
+            For each individual in population:
+                Select parents
+                Create offspring with crossover and mutation
+                Evaluate fitness of offspring
+                Maintain elitism in population
+            Update population with next generation
+        Return the best path and its fitness
+```
+
 ## Testing and Validation
-- Test Cases: developing test cases using provided example levels of different sizes to validate algorithm.
-- Edge Cases: considering edge cases such as minimal grid size, maximal time steps, and extreme starting positions.
-- Performance Evaluation: assessing the algorithm's performance with larger grid sizes and time steps to ensure scalability.
+In this project, I implemented a testing and validation framework to ensure the correctness and robustness of my algorithms. Here is a brief summary:
 
-# Code implementation
+Dynamic Programming Class Tests
+- Path Length Matches T: Verified that the algorithm returns a path of length equal to T by initializing a grid and checking the path length.
+- Positive Collected Value: Ensured the maximum path value is positive by using a grid with negative values and checking if the collected value is greater than zero.
+- Start Point Equals End Point: Confirmed the path starts and ends at the specified starting point by initializing a grid and verifying the first and last points of the path.
+- Invalid Start Point: Tested handling of invalid starting points by providing an out-of-bounds start point and verifying that an IndexError is raised.
 
+Genetic Algorithm Class Tests
+- Path Length Matches tmax: Verified that the algorithm returns a path of length equal to tmax by initializing a grid and checking the path length.
+- Positive Collected Value: Ensured the maximum fitness value is positive by using a grid with negative values and checking if the fitness value is greater than zero.
+- Start Point Equals End Point: Confirmed the path starts and ends at the specified starting point by initializing a grid and verifying the first and last points of the path.
+- Small Population and Generation Limit: Tested the algorithm with a small population size and limited generations by initializing a grid and checking if a valid path is returned.
+- Mutation Probability: Verified mutation probability by running the algorithm multiple times with a high mutation chance and checking for different resulting paths.
 
+# Code implementation and usage
+
+The code is used as follows:
+
+```python
+# Imports
+from orienteering import DynamicProgramming, GeneticAlgorithm
+from utils import parse_grid, visualize_path
+
+# Parse grids from provided txt files
+grid_20 = parse_grid('grids/20.txt')
+
+# Initialize input parameters
+start = (10, 10)
+T = 25
+regen_value = 0
+
+# Create an instance of DP implementation and calculate the maximum path value and path
+path_finder = DynamicProgramming(grid_20, start, T, regen_value)
+max_value, path, dp, parent, running_time_ms = path_finder.max_path_value_and_path()
+
+# Print the results
+print("Max Value:", max_value)
+print("Path:", path)
+visualize_path(grid_20, path)
+
+# Initialize and run the genetic algorithm
+ga_solver = GeneticAlgorithm(grid_20, start, end, T, regen_value)
+best_path, best_value, running_time_ms = ga_solver.run_algorithm()
+
+print("Best value:", best_value)
+print("Elapsed time (in ms):", running_time_ms)
+print("Best path:", best_path)
+
+visualize_path(grid_20, best_path)
+```
 
 # Results and evaluation
 

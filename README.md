@@ -57,36 +57,47 @@ Conceptually, this orienteering problem can be solved using four different appro
 
 ## 1. Brute Force (Depth-First Search or Breadth-First Search)
 Depth-First Search (DFS): Explores each path to its fullest depth before backtracking. Breadth-First Search (BFS): Explores all paths level by level.
+
 Benefits:
 - Guarantees finding the optimal solution.
 - Simple to implement and understand.
+
 Downsides:
 - Exponential time complexity: Very slow for large grids (N x N) and large T.
 - DFS may use less memory but can go very deep, while BFS may use a lot of memory due to storing all nodes at each level.
+
 ## 2. Greedy Algorithm
 The simplest implementation is that, at each step, the drone moves to the adjacent cell with the highest current value.
+
 Benefits:
 - Very fast and requires minimal computation.
 - Simple to implement and can quickly provide a solution.
+
 Downsides:
 - Does not guarantee the optimal solution.
 - Can get stuck in local optima and miss higher-value paths available through more complex routes.
+
 ## 3. Dynamic Programming
 Description:
 - Breaks the problem into subproblems and solves each subproblem only once, storing the results for future use.
 - Can be implemented using a table to store the maximum value collected up to each cell for a given time step.
+
 Benefits:
 - More efficient than brute force for larger grids as it avoids redundant calculations.
 - Provides an optimal solution by considering all possible paths.
+
 Downsides:
 - Still has significant computational complexity, though it is more feasible than brute force for larger grids.
 - Can consume a lot of memory, especially for large N and T.
+
 ## 4. (Meta)Heuristic Algorithm (Genetic Algorithm)
 Uses a population of solutions (paths) and evolves them over generations using crossover, mutation, and selection to find high-quality solutions.
+
 Benefits:
 - Can handle very large search spaces more efficiently than brute force.
 - Does not require an exhaustive search and can provide good solutions within the time limit T.
 - Can avoid local optima better than greedy algorithms.
+
 Downsides:
 - Does not guarantee finding the optimal solution due to stochastic nature.
 - Requires careful tuning of parameters (population size, mutation rate, etc.).

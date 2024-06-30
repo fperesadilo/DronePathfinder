@@ -1,4 +1,4 @@
-![alt text](https://github.com/fperesadilo/drone_pathfinder/blob/main/img/img.png)
+![alt text](https://github.com/fperesadilo/drone_pathfinder/blob/main/img/header.png)
 
 
 
